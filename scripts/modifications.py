@@ -1,10 +1,10 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu May 12 08:23:04 2022
+Created on Thu Jun 16 20:58:24 2022
 
 @author: Killshot
 """
-
 import requests
 import json
 import collections
@@ -42,35 +42,33 @@ for i in tqdm(range(size)):
     f=open(PATH + '/content/' + str(i+1) + ".json", 'r')
     new_json=json.load(f)
     quote_jsons.append(new_json)
-
-# %%%% Play with data
-quotes = [quote_json.get('quote') for quote_json in quote_jsons]
+    
+# %% create quote and uthor lists from loaded json's
 authors = [quote_json.get('author') for quote_json in quote_jsons]
+quotes = [quote_json.get('quote') for quote_json in quote_jsons]
 
-# %% unique appearances
-c = collections.Counter(authors) # we count number of appearances of each author
-c=sorted(c.items(), key=lambda x:x[1]) # sort the dictionary so when displayed on pie chart
-# it looks well ordered
-c = dict(c)
-# %% Validity check
-c = collections.Counter(authors) # we count number of appearances of each author
-c=sorted(c.items(), key=lambda x:x[1]) # sort the dictionary so when displayed on pie chart
-# it looks well ordered
-c = dict(c)
-# %% pie plot
+# %%
+import json 
+# Opening JSON file
+# f = open('movies.json')
 
-labels = c.keys()
-values = c.values()
-explode = [0.6/appearances for appearances in values] # the bigger the slice the closer it will be to the center
+# returns JSON object as
+# a dictionary
+# movies = json.load(f)
 
-f=plt.Figure(figsize=(48,48))
-patches, labels, pct_texts = plt.pie(
-    values,
-    rotatelabels=True,
-    autopct='%0.1f%%',
-    explode=explode,
-    startangle=-180,
-    labels=labels)
-# rotate the the percentage label same way as author label                                    
-for label, pct_text in zip(labels, pct_texts):
-    pct_text.set_rotation(label.get_rotation())
+for index in range(len(authors)):
+    
+    # add condition for the search here    
+    if authors[index] == 'Epicteus':
+        authors[index] = 'Epictetus'
+        print('changed item with id %i' %(index+1))
+        # and finally save the modified json
+        new_json_dict ={"author":authors[index],"quote":quotes[index]}
+        # output 
+        # PATH = "../content/"
+        PATH = os.path.dirname(__file__)[:-7] # since we don't want to save the jsons in /scripts
+        with open(PATH + '/content/' + str(index+1) + ".json", 'w') as f:
+            json.dump(new_json_dict, f)
+            
+# Closing file
+f.close()
