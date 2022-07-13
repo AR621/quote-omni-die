@@ -47,19 +47,27 @@ for i in tqdm(range(size)):
 authors = [quote_json.get('author') for quote_json in quote_jsons]
 quotes = [quote_json.get('quote') for quote_json in quote_jsons]
 
-# %%
+# %% Measuring simularity between quotes for administrative purposes
+import numpy
+import difflib
+
+def string_simularity(string_list):
+    difference_matrix = numpy.eye(len(string_list))
+    for qi1 in range(len(quotes)):
+        for qi2 in range(len(quotes)):
+           difference_matrix[qi1,qi2] = difflib.SequenceMatcher(None, quotes[qi1], quotes[qi2]).ratio()
+    return difference_matrix
+difference = string_simularity(quotes)
+
+# %% MEC - Mass Error Correction
 import json 
 # Opening JSON file
-# f = open('movies.json')
-
-# returns JSON object as
-# a dictionary
-# movies = json.load(f)
+swap_criteria = 'Epicteus'
 
 for index in range(len(authors)):
     
     # add condition for the search here    
-    if authors[index] == 'Epicteus':
+    if authors[index] == swap_criteria:
         authors[index] = 'Epictetus'
         print('changed item with id %i' %(index+1))
         # and finally save the modified json
