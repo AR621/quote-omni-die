@@ -9,10 +9,18 @@ import requests
 import json
 import collections
 import os
+import sys
 import matplotlib.pyplot as plt
-
 from tqdm import tqdm
 
+# own imports
+# paths (so the script works when invoked out of its own dir)
+file_path = os.path.abspath(__file__)
+file_name = os.path.basename(__file__)
+file_path=file_path[:-len(file_name)]
+sys.path.insert(0, file_path)
+# finalle here...
+import load_quotes as loader
 # %% Download json's
 repo='https://raw.githubusercontent.com/AR621/quote-omni-die/main/content/'
 size_file='size.json'
