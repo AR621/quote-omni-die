@@ -5,7 +5,7 @@ import os
 from tqdm import tqdm
 
 
-def load_quotes(download=False):
+def load_quotes(download=False, get_authors=False, get_quotes=True):
     # %% Download json's
     if download:
         repo = 'https://raw.githubusercontent.com/AR621/quote-omni-die/main/content/'
@@ -38,4 +38,11 @@ def load_quotes(download=False):
             f = open(PATH + '/content/' + str(i + 1) + ".json", 'r')
             new_json = json.load(f)
             quote_jsons.append(new_json)
-    return quote_jsons
+
+    if get_quotes:
+        quotes = [quote_json.get('quote') for quote_json in quote_jsons]
+        return quotes
+    if get_authors:
+        authors = [quote_json.get('author') for quote_json in quote_jsons]
+        return authors
+    # TODO  make em handle both quaries at once
