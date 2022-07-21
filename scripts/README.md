@@ -16,3 +16,7 @@ This script uses matplotlib to plot all the charts visible on the main page of t
 - string_comparison.py
 
 this script provides simple functions for comparing two quotes to each other as to determine how simular they are.
+
+- quote_bringer.py
+
+very simple script for searching through the repo for quotes from specific authors
