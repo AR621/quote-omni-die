@@ -33,4 +33,4 @@ def search_quote_by_author(search_criteria):
             print()
 
 
-search_quote_by_author('Aristotle')
+search_quote_by_author('Helen Keller')
