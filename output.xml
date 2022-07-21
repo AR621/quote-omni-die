@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.9.11 on win32)" generated="20220718 12:19:06.359" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.9.11 on win32)" generated="20220721 09:32:03.864" rpa="false" schemaversion="3">
 <suite id="s1" name="Quote Similarity Test" source="C:\Users\dolacins\PycharmProjects\quote-omni-die\tests\quote_similarity_test.robot">
 <kw name="load quotes for checking" type="SETUP">
 <doc>loads quotes list from database and sets it as a suite variable</doc>
@@ -8,43 +8,43 @@
 <arg>download=False</arg>
 <arg>get_authors=False</arg>
 <arg>get_quotes=True</arg>
-<msg timestamp="20220718 12:19:06.594" level="INFO">0%|                                                                                                                                                                                                           | 0/96 [00:00&lt;?, ?it/s]100%|################################################################################################################################################################################################| 96/96 [00:00&lt;00:00, 8019.06it/s]</msg>
-<msg timestamp="20220718 12:19:06.595" level="INFO">${quotes} = ['You have power over your mind - not outside events. Realize this, and you will find strength.', 'When you arise in the morning think of what a privilage it is to be alive, to think, to enjoy, to lov...</msg>
-<status status="PASS" starttime="20220718 12:19:06.573" endtime="20220718 12:19:06.595"/>
+<msg timestamp="20220721 09:32:04.210" level="INFO">0%|                                                                                                                                                        | 0/100 [00:00&lt;?, ?it/s]100%|############################################################################################################################################| 100/100 [00:00&lt;00:00, 7144.71it/s]</msg>
+<msg timestamp="20220721 09:32:04.211" level="INFO">${quotes} = ['You have power over your mind - not outside events. Realize this, and you will find strength.', 'When you arise in the morning think of what a privilege it is to be alive, to think, to enjoy, to lov...</msg>
+<status status="PASS" starttime="20220721 09:32:04.185" endtime="20220721 09:32:04.211"/>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <arg>${quotes}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<msg timestamp="20220718 12:19:06.596" level="INFO">${quotes} = ['You have power over your mind - not outside events. Realize this, and you will find strength.', 'When you arise in the morning think of what a privilage it is to be alive, to think, to enjoy, to lov...</msg>
-<status status="PASS" starttime="20220718 12:19:06.596" endtime="20220718 12:19:06.596"/>
+<msg timestamp="20220721 09:32:04.212" level="INFO">${quotes} = ['You have power over your mind - not outside events. Realize this, and you will find strength.', 'When you arise in the morning think of what a privilege it is to be alive, to think, to enjoy, to lov...</msg>
+<status status="PASS" starttime="20220721 09:32:04.211" endtime="20220721 09:32:04.212"/>
 </kw>
-<status status="PASS" starttime="20220718 12:19:06.573" endtime="20220718 12:19:06.596"/>
+<status status="PASS" starttime="20220721 09:32:04.185" endtime="20220721 09:32:04.212"/>
 </kw>
 <test id="s1-t1" name="Duplicate quote test" line="10">
 <kw name="Filter By Similarity" library="string_comparison">
 <var>${duplicate}</var>
 <arg>${quotes}</arg>
 <arg>tolerance=1.</arg>
-<msg timestamp="20220718 12:19:08.735" level="INFO">${duplicate} = []</msg>
-<status status="PASS" starttime="20220718 12:19:06.598" endtime="20220718 12:19:08.735"/>
+<msg timestamp="20220721 09:32:07.461" level="INFO">${duplicate} = []</msg>
+<status status="PASS" starttime="20220721 09:32:04.213" endtime="20220721 09:32:07.461"/>
 </kw>
 <kw name="Should Be Empty" library="BuiltIn">
 <arg>${duplicate}</arg>
 <doc>Verifies that the given item is empty.</doc>
-<msg timestamp="20220718 12:19:08.736" level="INFO">Length is 0</msg>
-<status status="PASS" starttime="20220718 12:19:08.736" endtime="20220718 12:19:08.736"/>
+<msg timestamp="20220721 09:32:07.462" level="INFO">Length is 0</msg>
+<status status="PASS" starttime="20220721 09:32:07.462" endtime="20220721 09:32:07.462"/>
 </kw>
 <kw name="Run Keyword If Test Failed" library="BuiltIn" type="TEARDOWN">
 <arg>log to console</arg>
-<arg>$log as=ERROR</arg>
-<arg>$variable to log=${duplicate}</arg>
+<arg>log as=ERROR</arg>
+<arg>variable to log=${duplicate}</arg>
 <doc>Runs the given keyword with the given arguments, if the test failed.</doc>
-<status status="PASS" starttime="20220718 12:19:08.737" endtime="20220718 12:19:08.737"/>
+<status status="PASS" starttime="20220721 09:32:07.463" endtime="20220721 09:32:07.463"/>
 </kw>
 <doc>Fails if it finds duplicate quotes</doc>
 <tag>duplicate check</tag>
 <tag>similarity check</tag>
-<status status="PASS" starttime="20220718 12:19:06.597" endtime="20220718 12:19:08.737"/>
+<status status="PASS" starttime="20220721 09:32:04.212" endtime="20220721 09:32:07.463"/>
 </test>
 <test id="s1-t2" name="quote similarity test" line="19">
 <kw name="Filter By Similarity" library="string_comparison">
@@ -52,16 +52,17 @@
 <arg>${quotes}</arg>
 <arg>tolerance=.50</arg>
 <arg>upper_bound_ignore=.70</arg>
-<msg timestamp="20220718 12:19:10.670" level="INFO">${similar} = [[ 6.         46.          0.50340136]]</msg>
-<status status="PASS" starttime="20220718 12:19:08.739" endtime="20220718 12:19:10.670"/>
+<msg timestamp="20220721 09:32:10.758" level="INFO">${similar} = [[ 6.         46.          0.50340136]
+ [45.         97.          0.51748252]]</msg>
+<status status="PASS" starttime="20220721 09:32:07.465" endtime="20220721 09:32:10.759"/>
 </kw>
 <kw name="Filter By Similarity" library="string_comparison">
 <var>${very similar}</var>
 <arg>${quotes}</arg>
 <arg>tolerance=.70</arg>
 <arg>upper_bound_ignore=1.0</arg>
-<msg timestamp="20220718 12:19:12.609" level="INFO">${very similar} = []</msg>
-<status status="PASS" starttime="20220718 12:19:10.671" endtime="20220718 12:19:12.610"/>
+<msg timestamp="20220721 09:32:14.052" level="INFO">${very similar} = []</msg>
+<status status="PASS" starttime="20220721 09:32:10.759" endtime="20220721 09:32:14.052"/>
 </kw>
 <if>
 <branch type="IF" condition="'@{similar}' != '@{EMPTY}'">
@@ -85,49 +86,50 @@
 <arg>Found the following similar strings</arg>
 <arg>${log as}</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20220718 12:19:12.611" level="WARN">Found the following similar strings</msg>
-<status status="PASS" starttime="20220718 12:19:12.611" endtime="20220718 12:19:12.612"/>
+<msg timestamp="20220721 09:32:14.054" level="WARN">Found the following similar strings</msg>
+<status status="PASS" starttime="20220721 09:32:14.054" endtime="20220721 09:32:14.055"/>
 </kw>
 <kw name="Log" library="BuiltIn">
 <arg>quote ID 1 | quote ID 2 | similarity [0-1]</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20220718 12:19:12.613" level="INFO">quote ID 1 | quote ID 2 | similarity [0-1]</msg>
-<status status="PASS" starttime="20220718 12:19:12.613" endtime="20220718 12:19:12.613"/>
+<msg timestamp="20220721 09:32:14.055" level="INFO">quote ID 1 | quote ID 2 | similarity [0-1]</msg>
+<status status="PASS" starttime="20220721 09:32:14.055" endtime="20220721 09:32:14.055"/>
 </kw>
 <kw name="Log" library="BuiltIn">
 <arg>${variable to log}</arg>
 <arg>${log as}</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20220718 12:19:12.613" level="WARN">[[ 6.         46.          0.50340136]]</msg>
-<status status="PASS" starttime="20220718 12:19:12.613" endtime="20220718 12:19:12.615"/>
+<msg timestamp="20220721 09:32:14.056" level="WARN">[[ 6.         46.          0.50340136]
+ [45.         97.          0.51748252]]</msg>
+<status status="PASS" starttime="20220721 09:32:14.055" endtime="20220721 09:32:14.056"/>
 </kw>
-<status status="PASS" starttime="20220718 12:19:12.611" endtime="20220718 12:19:12.615"/>
+<status status="PASS" starttime="20220721 09:32:14.054" endtime="20220721 09:32:14.056"/>
 </kw>
-<status status="PASS" starttime="20220718 12:19:12.610" endtime="20220718 12:19:12.615"/>
+<status status="PASS" starttime="20220721 09:32:14.054" endtime="20220721 09:32:14.056"/>
 </kw>
-<status status="PASS" starttime="20220718 12:19:12.610" endtime="20220718 12:19:12.615"/>
+<status status="PASS" starttime="20220721 09:32:14.053" endtime="20220721 09:32:14.056"/>
 </branch>
-<status status="PASS" starttime="20220718 12:19:12.610" endtime="20220718 12:19:12.615"/>
+<status status="PASS" starttime="20220721 09:32:14.053" endtime="20220721 09:32:14.057"/>
 </if>
 <kw name="Should Be Empty" library="BuiltIn">
 <arg>${very similar}</arg>
 <doc>Verifies that the given item is empty.</doc>
-<msg timestamp="20220718 12:19:12.616" level="INFO">Length is 0</msg>
-<status status="PASS" starttime="20220718 12:19:12.615" endtime="20220718 12:19:12.616"/>
+<msg timestamp="20220721 09:32:14.057" level="INFO">Length is 0</msg>
+<status status="PASS" starttime="20220721 09:32:14.057" endtime="20220721 09:32:14.057"/>
 </kw>
 <kw name="Run Keyword If Test Failed" library="BuiltIn" type="TEARDOWN">
 <arg>log to console</arg>
 <arg>log as=ERROR</arg>
 <arg>variable to log=${very similar}</arg>
 <doc>Runs the given keyword with the given arguments, if the test failed.</doc>
-<status status="PASS" starttime="20220718 12:19:12.616" endtime="20220718 12:19:12.616"/>
+<status status="PASS" starttime="20220721 09:32:14.057" endtime="20220721 09:32:14.057"/>
 </kw>
 <doc>Fails if it finds too similar quotes, logs all the bad quotes as well as suspiciously similoar quotes</doc>
 <tag>similarity check</tag>
-<status status="PASS" starttime="20220718 12:19:08.738" endtime="20220718 12:19:12.617"/>
+<status status="PASS" starttime="20220721 09:32:07.464" endtime="20220721 09:32:14.057"/>
 </test>
 <doc>General test case for checking similarity betweeen two quotes as to avoid duplicate or similar quotes</doc>
-<status status="PASS" starttime="20220718 12:19:06.362" endtime="20220718 12:19:12.619"/>
+<status status="PASS" starttime="20220721 09:32:03.868" endtime="20220721 09:32:14.059"/>
 </suite>
 <statistics>
 <total>
@@ -142,7 +144,8 @@
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20220718 12:19:12.611" level="WARN">Found the following similar strings</msg>
-<msg timestamp="20220718 12:19:12.613" level="WARN">[[ 6.         46.          0.50340136]]</msg>
+<msg timestamp="20220721 09:32:14.054" level="WARN">Found the following similar strings</msg>
+<msg timestamp="20220721 09:32:14.056" level="WARN">[[ 6.         46.          0.50340136]
+ [45.         97.          0.51748252]]</msg>
 </errors>
 </robot>

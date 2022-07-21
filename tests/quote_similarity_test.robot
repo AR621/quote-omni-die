@@ -14,7 +14,7 @@ Duplicate quote test
 
     ${duplicate}=  Filter By Similarity         ${quotes}       tolerance=1.
     Should Be Empty         ${duplicate}
-    [Teardown]  Run Keyword If Test Failed          log to console    $log as=ERROR    $variable to log=${duplicate}
+    [Teardown]  Run Keyword If Test Failed          log to console    log as=ERROR    variable to log=${duplicate}
 
 quote similarity test
     [Documentation]    Fails if it finds too similar quotes, logs all the bad quotes as well as suspiciously similoar quotes
