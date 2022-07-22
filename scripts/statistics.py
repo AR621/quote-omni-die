@@ -44,7 +44,7 @@ f = plt.Figure(figsize=(48, 48))
 patches, labels, pct_texts = plt.pie(
     values,
     rotatelabels=True,
-    radius=0.65,
+    radius=0.75,
     autopct='%0.1f%%',
     explode=explode,
     startangle=-180,
@@ -53,4 +53,5 @@ patches, labels, pct_texts = plt.pie(
 # rotate the percentage label same way as author label
 for label, pct_text in zip(labels, pct_texts):
     pct_text.set_rotation(label.get_rotation())
+plt.tight_layout()
 plt.show()
