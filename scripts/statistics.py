@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu May 12 08:23:04 2022
-
 @author: Killshot
 """
 
@@ -9,6 +7,10 @@ import collections
 import os
 import matplotlib.pyplot as plt
 from sys import path
+
+# user
+DISP = False
+SAVE = True
 
 # own imports
 # paths (so the script works when invoked out of its own dir)
@@ -54,4 +56,7 @@ patches, labels, pct_texts = plt.pie(
 for label, pct_text in zip(labels, pct_texts):
     pct_text.set_rotation(label.get_rotation())
 plt.tight_layout()
-plt.show()
+if SAVE:
+    plt.savefig('figures/pie-stats.png', dpi=400)
+if DISP:
+    plt.show()
