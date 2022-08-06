@@ -1,7 +1,7 @@
 *** settings ***
-Documentation    General test case for checking similarity betweeen two quotes as to avoid duplicate or similar quotes
-Library  ${CURDIR}${/}..\\scripts\\string_comparison.py
-Library  ${CURDIR}${/}..\\scripts\\load_quotes.py
+Documentation    General test case for checking similarity between two quotes as to avoid duplicate or similar quotes
+Library  ${CURDIR}${/}../scripts/string_comparison.py
+Library  ${CURDIR}${/}../scripts/load_quotes.py
 
 Suite Setup             load quotes for checking
 Suite Teardown          none
