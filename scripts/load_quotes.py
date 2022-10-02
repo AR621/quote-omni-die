@@ -5,7 +5,7 @@ import os
 from tqdm import tqdm
 
 
-def load_quotes(download=False, get_authors=False, get_quotes=True):
+def load_quotes(download=False, get_authors=False, get_quotes=True, get_size=False):
     # %% Download json's
     if download:
         repo = 'https://raw.githubusercontent.com/AR621/quote-omni-die/main/content/'
@@ -46,3 +46,15 @@ def load_quotes(download=False, get_authors=False, get_quotes=True):
         authors = [quote_json.get('author') for quote_json in quote_jsons]
         return authors
     # TODO  make em handle both quaries at once
+
+def get_size(download=False):
+    if download:
+        repo = 'https://raw.githubusercontent.com/AR621/quote-omni-die/main/content/'
+        size_file = 'size.json'
+        r = requests.get(repo + size_file)
+        print(r)
+        return json.loads(r.text).get('number_of_quotes')
+    else:
+        PATH = os.path.dirname(__file__)[:-7]  # since we don't want to save the jsons in /scripts
+        f = open(PATH + '/content/' + 'size' + ".json", 'r')
+        return json.load(f).get('number_of_quotes')
